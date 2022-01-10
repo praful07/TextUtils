@@ -5,9 +5,11 @@ export default function TextForm(props) {
   const handleUpClick = ()=>{
     console.log('UpClick pressed');
     setText(text.toUpperCase());
+    props.showAlert("Converted to uppercase","success");
   }
   const handleLowClick = (e)=>{
     setText(text.toLowerCase());
+    props.showAlert("Converted to lowercase","success");
   }
 
   const handleOnChange = (e)=>{
@@ -17,6 +19,7 @@ export default function TextForm(props) {
 
   const clearTextArea = ()=>{
     setText("");
+    props.showAlert("Text area cleared","warning");
   }
   const [text, setText] = useState("");
   return (

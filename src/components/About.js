@@ -135,3 +135,5 @@ export default function About(props) {
         </div>
     );
 }
+
+export default About
