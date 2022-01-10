@@ -18,24 +18,25 @@ export default function TextForm(props) {
   const clearTextArea = ()=>{
     setText("");
   }
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState("");
   return (
     <>
       <div className="container my-3">
-          <h1>{props.heading}</h1>
+          <h1 style={{color : props.mode === 'light' ? 'black' : 'white'}}>{props.heading}</h1>
           <div className="mb-3 my-4">
-              <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+              <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"
+              style={{ backgroundColor : props.mode === 'light' ? 'grey' : 'white', color : props.mode === 'light' ? 'white' : 'black' }}></textarea>
           </div>
           <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
           <button className="btn btn-warning mx-2" onClick={handleLowClick}>Convert to LowerCase</button>
           <button className="btn btn-danger mx-2" onClick={clearTextArea}>Clear Text Area</button>
       </div>
-      <div className="container my-5">
+      <div className="container my-5" style={{color : props.mode === 'light' ? 'black' : 'white'}}>
         <h1>Text Summary</h1>
         <p>Text has {text.split(" ").length} words and {text.length} characters.</p>
         <p>It will take average of {text.split(" ").length*0.008} minutes to read the whole paragraph.</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter some text in the box to preview here."}</p>
       </div>
     </>
   );
